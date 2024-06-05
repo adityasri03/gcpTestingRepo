@@ -12,18 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import webapp2
+# import webapp2
 
 
-class MainPage(webapp2.RequestHandler):
-    def get(self):
-        self.response.headers["Content-Type"] = "text/plain"
-        self.response.write("Hello, World!")
+# class MainPage(webapp2.RequestHandler):
+#     def get(self):
+#         self.response.headers["Content-Type"] = "text/plain"
+#         self.response.write("Hello, World!")
 
 
-app = webapp2.WSGIApplication(
-    [
-        ("/", MainPage),
-    ],
-    debug=True,
-)
+# app = webapp2.WSGIApplication(
+#     [
+#         ("/", MainPage),
+#     ],
+#     debug=True,
+# )
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run()
+
